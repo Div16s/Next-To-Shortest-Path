@@ -26,8 +26,8 @@ Both algorithms rely on:
 
 ## Example Graphs
 
-Sample graphs used for demonstration are included as hand-drawn images in this repository:
-- **Graph G**: The original weighted undirected graph ([see image 3][3]).
+Sample graphs used for demonstration are included as images in this repository:
+- **Graph G**: The original weighted undirected graph [!Graph G](images/Graph-G.png).
 - **Derived Graph D\***: Shows only edges that are part of shortest paths ([see image 1][1]).
 - **Shortest-Path Tree**: Rooted at the destination vertex ([see image 2][2]).
 
