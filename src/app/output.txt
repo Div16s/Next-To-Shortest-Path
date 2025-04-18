@@ -59,3 +59,43 @@ Node: 11, Parent: 13
 Node: 12, Parent: 0
 Node: 13, Parent: -1
 ----------- 
+Dijkstra Distances dG(u,x): 
+Node: 0, Distance: 1
+Node: 1, Distance: 1
+Node: 2, Distance: 2
+Node: 3, Distance: 2
+Node: 4, Distance: 3
+Node: 5, Distance: 4
+Node: 6, Distance: 5
+Node: 7, Distance: 4
+Node: 8, Distance: 2
+Node: 9, Distance: 3
+Node: 10, Distance: 5
+Node: 11, Distance: 6
+Node: 12, Distance: 0
+Node: 13, Distance: 6
+----------- 
+Dijkstra Distances dG(x,v): 
+Node: 0, Distance: 5
+Node: 1, Distance: 5
+Node: 2, Distance: 4
+Node: 3, Distance: 4
+Node: 4, Distance: 3
+Node: 5, Distance: 2
+Node: 6, Distance: 1
+Node: 7, Distance: 9
+Node: 8, Distance: 6
+Node: 9, Distance: 7
+Node: 10, Distance: 3
+Node: 11, Distance: 2
+Node: 12, Distance: 6
+Node: 13, Distance: 0
+----------- 
+v' = { 0 1 2 5 7 8 9 10 11 12 13 }
+----------- 
+sorted v' = { 12 0 1 2 8 9 5 7 10 11 13 }
+----------- 
+Length of simple path which is just greater than the shortest path: 8
+----------- 
+End of the program!
+Thank you for using our BTP Project!

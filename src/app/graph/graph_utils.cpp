@@ -68,3 +68,22 @@ void SPT_DIJKSTRA(int root, int n, vector<int> &parent, vector<vector<pair<int,i
     }
 }
 
+void DIJKSTRA(int node, int n, vector<int> &dist, vector<vector<pair<int,int>>> &adj){
+    priority_queue<pair<int,int>,vector<pair<int,int>>, greater<pair<int,int>>> pq;
+    pq.push({0,node});
+    dist[node]=0;
+    while(!pq.empty()){
+        auto it1 = pq.top();
+        pq.pop();
+
+        int curr_node = it1.second;
+        for(auto it2: adj[curr_node]){
+            int adj_node = it2.first, edge_wt = it2.second;
+            if(dist[curr_node]+edge_wt < dist[adj_node]){
+                dist[adj_node] = dist[curr_node]+edge_wt;
+                pq.push({dist[adj_node],adj_node});
+            }
+        }
+    }
+}
+
