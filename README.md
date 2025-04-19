@@ -31,7 +31,8 @@ Sample graphs used for demonstration are included as images in this repository:
 - ![Graph-G](https://github.com/Div16s/Next-To-Shortest-Path/blob/main/images/Graph-G.png?raw=true)
 - **Derived Graph D\***: Shows only edges that are part of shortest paths.
 - ![Graph-D_star](https://github.com/Div16s/Next-To-Shortest-Path/blob/main/images/Graph-D_star.png?raw=true)
-- **Shortest-Path Tree**: Rooted at the destination vertex ([see image 2][2]).
+- **Shortest-Path Tree**: Rooted at the destination vertex.
+- ![Graph-Shortest_Path_Tree](https://github.com/Div16s/Next-To-Shortest-Path/blob/main/images/Graph-Shortest_Path_Tree.png?raw=true)
 
 **Source (`u`) = 12, Destination (`v`) = 13**
 
