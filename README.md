@@ -54,7 +54,67 @@ Sample graphs used for demonstration are included as images in this repository:
 
 ### Input Format
 
-- Adjacency list or edge list with weights.
-- Specify source (`u`) and destination (`v`).
+- The input should be provided via `input.txt`.
+- Format:
 
-### Example (pseudo-code)
+```plaintext
+n e
+u1 v1 w1
+u2 v2 w2
+...
+ue ve we
+src dest
+```
+Where:
+- `n` = number of nodes (0-indexed)
+- `e` = number of edges
+- Each line after that represents an edge between node `u` and node `v` with weight `w`.
+- Last line provides source (`src`) and destination (`dest`).
+
+### Example
+```plaintext
+6 7
+0 1 2
+0 2 4
+1 2 1
+1 3 7
+2 4 3
+3 5 1
+4 5 5
+0 5
+```
+
+### Running the Project
+
+Inside the `src/app/` directory:
+
+```bash
+# Compile
+ g++ main.cpp graph/graph_utils.cpp -o program
+
+# Run
+ ./program.exe
+```
+
+The program reads the input graph from `input.txt` and outputs detailed information in `output.txt`, including all shortest paths, derived D* graph, shortest-path tree, and lengths of next-to-shortest paths found by N2S-PATH1 and N2S-PATH2.
+
+---
+
+## Output
+
+The `output.txt` file will contain:
+- List of all shortest paths from `src` to `dest`.
+- Derived **D\*** graph.
+- Shortest-Path Tree rooted at `dest`.
+- Distances from source and destination.
+- Identification of vertices for trimming trees.
+- Length of the next-to-shortest path found.
+- Step-by-step execution details.
+
+---
+
+## References
+
+- "A Quadratic Algorithm for Finding Next-to-Shortest Paths in Graphs" by Kuo-Hua Kao, Tsan-sheng Hsu, Chien-Chung Shen, and Hong-Yi Wu (Algorithmica, 2011).
+
+---
