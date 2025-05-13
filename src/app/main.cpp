@@ -1,7 +1,9 @@
 # include <bits/stdc++.h>
 # include "./graph/graph_utils.h"
 # include <fstream>
+#include <chrono> 
 using namespace std;
+using namespace std::chrono;
 
 // File I/O
 ifstream infile("input.txt");
@@ -18,6 +20,16 @@ void N2S_PATH1(int nodes, int edges, vector<vector<pair<int,int>>> &adj, int src
     vector<int> path;
 
     FIND_PATHS(dest, path, parent1, paths);
+
+    vector<int> dist1(nodes,INT_MAX), dist2(nodes,INT_MAX);
+
+    // dG(u,x) 
+    DIJKSTRA(src, nodes, dist1, adj);
+
+    // dG(x,v)
+    DIJKSTRA(dest, nodes, dist2, adj);
+
+    outfile << "Shortest path length: " << dist1[dest] << "\n";
 
     map<int,set<int>> d_star;
 
@@ -52,14 +64,6 @@ void N2S_PATH1(int nodes, int edges, vector<vector<pair<int,int>>> &adj, int src
         outfile << "Node: " << i << ", " << "Parent: " << parent2[i] << '\n';
     }
     outfile << "----------- \n";
-
-    vector<int> dist1(nodes,INT_MAX), dist2(nodes,INT_MAX);
-
-    // dG(u,x) 
-    DIJKSTRA(src, nodes, dist1, adj);
-
-    // dG(x,v)
-    DIJKSTRA(dest, nodes, dist2, adj);
 
     outfile << "Dijkstra Distances dG(u,x): " << '\n';
     for(int i=0; i<nodes; i++){
@@ -147,7 +151,8 @@ void N2S_PATH1(int nodes, int edges, vector<vector<pair<int,int>>> &adj, int src
         }
     }
 
-    outfile << "Length of simple path which is just greater than the shortest path (PATH1): " << *min_element(ans_set.begin(), ans_set.end()) << '\n';
+    int n2s_path_length = *min_element(ans_set.begin(), ans_set.end()) < dist1[dest] ? INT_MAX : *min_element(ans_set.begin(), ans_set.end());
+    outfile << "Length of simple path which is just greater than the shortest path (PATH1): " << n2s_path_length << '\n';
     outfile << "----------- \n";
 
 }
@@ -245,6 +250,11 @@ void N2S_PATH2(int nodes, int edges, vector<vector<pair<int,int>>> &adj, int src
         }
     }
 
+    outfile << "idom(src, x):\n";
+    for(int i = 0; i < nodes; i++) {
+        outfile << "Node " << i << ": " << idom[i] << "\n";
+    }
+    outfile << "----------- \n";
 
     // Computing in-neighbors in D*
     vector<set<int>> N_minus_single(nodes);
@@ -406,8 +416,17 @@ int main() {
     int src,dest;
     infile >> src >> dest;
 
+    auto start1 = high_resolution_clock::now();
     N2S_PATH1(n, e, adj, src, dest, edge_wt_map);
+    auto stop1 = high_resolution_clock::now();
+    auto duration1 = duration_cast<milliseconds>(stop1 - start1);
+    outfile << "\nTime taken by N2S_PATH1: " << duration1.count() << " ms\n";
+
+    auto start2 = high_resolution_clock::now();
     N2S_PATH2(n, e, adj, src, dest, edge_wt_map);
+    auto stop2 = high_resolution_clock::now();
+    auto duration2 = duration_cast<milliseconds>(stop2 - start2);
+    outfile << "\nTime taken by N2S_PATH2: " << duration2.count() << " ms\n";
 
     outfile << "End of the program!" << '\n';
     outfile << "Thank you for using our BTP Project!" << '\n';

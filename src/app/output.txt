@@ -2,218 +2,262 @@ Welcome to our BTP Project!
 
 
 ----- N2S-PATH1 Algorithm -----
-All shortest-paths from src 12 to dest 13
-12 -> 1 -> 3 -> 5 -> 13
-12 -> 0 -> 2 -> 4 -> 5 -> 13
-12 -> 1 -> 2 -> 4 -> 5 -> 13
-12 -> 0 -> 2 -> 4 -> 6 -> 13
-12 -> 1 -> 2 -> 4 -> 6 -> 13
+Shortest path length: 7
+All shortest-paths from src 0 to dest 11
+0 -> 1 -> 5 -> 7 -> 11
+0 -> 2 -> 1 -> 5 -> 7 -> 11
+0 -> 1 -> 6 -> 8 -> 7 -> 11
+0 -> 2 -> 1 -> 6 -> 8 -> 7 -> 11
+0 -> 2 -> 3 -> 9 -> 12 -> 11
+0 -> 1 -> 6 -> 9 -> 12 -> 11
+0 -> 2 -> 1 -> 6 -> 9 -> 12 -> 11
 
 Derived D* Graph
 ----------- 
 Node: 0
+0 => { 1 , 2 }
 0 => { 2 , 1 }
 ----------- 
 ----------- 
 Node: 1
-1 => { 2 , 1 }
-1 => { 3 , 1 }
+1 => { 5 , 2 }
+1 => { 6 , 1 }
 ----------- 
 ----------- 
 Node: 2
-2 => { 4 , 1 }
+2 => { 1 , 1 }
+2 => { 3 , 2 }
 ----------- 
 ----------- 
 Node: 3
-3 => { 5 , 2 }
------------ 
------------ 
-Node: 4
-4 => { 5 , 1 }
-4 => { 6 , 2 }
+3 => { 9 , 1 }
 ----------- 
 ----------- 
 Node: 5
-5 => { 13 , 2 }
+5 => { 7 , 2 }
 ----------- 
 ----------- 
 Node: 6
-6 => { 13 , 1 }
+6 => { 8 , 2 }
+6 => { 9 , 1 }
+----------- 
+----------- 
+Node: 7
+7 => { 11 , 1 }
+----------- 
+----------- 
+Node: 8
+8 => { 7 , 1 }
+----------- 
+----------- 
+Node: 9
+9 => { 12 , 1 }
 ----------- 
 ----------- 
 Node: 12
-12 => { 0 , 1 }
-12 => { 1 , 1 }
+12 => { 11 , 2 }
 ----------- 
 Shortest-path Tree: 
-Node: 0, Parent: 2
-Node: 1, Parent: 2
-Node: 2, Parent: 4
-Node: 3, Parent: 5
-Node: 4, Parent: 6
-Node: 5, Parent: 13
-Node: 6, Parent: 13
-Node: 7, Parent: 9
-Node: 8, Parent: 1
-Node: 9, Parent: 10
-Node: 10, Parent: 5
-Node: 11, Parent: 13
-Node: 12, Parent: 0
-Node: 13, Parent: -1
+Node: 0, Parent: 1
+Node: 1, Parent: 5
+Node: 2, Parent: 3
+Node: 3, Parent: 9
+Node: 4, Parent: 2
+Node: 5, Parent: 7
+Node: 6, Parent: 8
+Node: 7, Parent: 11
+Node: 8, Parent: 7
+Node: 9, Parent: 12
+Node: 10, Parent: 13
+Node: 11, Parent: -1
+Node: 12, Parent: 11
+Node: 13, Parent: 12
 ----------- 
 Dijkstra Distances dG(u,x): 
-Node: 0, Distance: 1
-Node: 1, Distance: 1
-Node: 2, Distance: 2
-Node: 3, Distance: 2
+Node: 0, Distance: 0
+Node: 1, Distance: 2
+Node: 2, Distance: 1
+Node: 3, Distance: 3
 Node: 4, Distance: 3
 Node: 5, Distance: 4
-Node: 6, Distance: 5
-Node: 7, Distance: 4
-Node: 8, Distance: 2
-Node: 9, Distance: 3
-Node: 10, Distance: 5
-Node: 11, Distance: 6
-Node: 12, Distance: 0
+Node: 6, Distance: 3
+Node: 7, Distance: 6
+Node: 8, Distance: 5
+Node: 9, Distance: 4
+Node: 10, Distance: 7
+Node: 11, Distance: 7
+Node: 12, Distance: 5
 Node: 13, Distance: 6
 ----------- 
 Dijkstra Distances dG(x,v): 
-Node: 0, Distance: 5
+Node: 0, Distance: 7
 Node: 1, Distance: 5
-Node: 2, Distance: 4
+Node: 2, Distance: 6
 Node: 3, Distance: 4
-Node: 4, Distance: 3
-Node: 5, Distance: 2
-Node: 6, Distance: 1
-Node: 7, Distance: 9
-Node: 8, Distance: 6
-Node: 9, Distance: 7
-Node: 10, Distance: 3
-Node: 11, Distance: 2
-Node: 12, Distance: 6
-Node: 13, Distance: 0
+Node: 4, Distance: 8
+Node: 5, Distance: 3
+Node: 6, Distance: 4
+Node: 7, Distance: 1
+Node: 8, Distance: 2
+Node: 9, Distance: 3
+Node: 10, Distance: 4
+Node: 11, Distance: 0
+Node: 12, Distance: 2
+Node: 13, Distance: 3
 ----------- 
-v' = { 0 1 2 5 7 8 9 10 11 12 13 }
+v' = { 0 2 3 4 6 10 12 13 }
 ----------- 
-sorted v' = { 12 0 1 2 8 9 5 7 10 11 13 }
+sorted v' = { 0 2 3 4 6 12 13 10 }
 ----------- 
-Length of simple path which is just greater than the shortest path (PATH1): 8
+Length of simple path which is just greater than the shortest path (PATH1): 9
 ----------- 
 
+Time taken by N2S_PATH1: 0 ms
+
 ----- N2S-PATH2 Algorithm -----
-Shortest path length: 6
-All shortest-paths from src 12 to dest 13
-12 -> 1 -> 3 -> 5 -> 13
-12 -> 0 -> 2 -> 4 -> 5 -> 13
-12 -> 1 -> 2 -> 4 -> 5 -> 13
-12 -> 0 -> 2 -> 4 -> 6 -> 13
-12 -> 1 -> 2 -> 4 -> 6 -> 13
+Shortest path length: 7
+All shortest-paths from src 0 to dest 11
+0 -> 1 -> 5 -> 7 -> 11
+0 -> 2 -> 1 -> 5 -> 7 -> 11
+0 -> 1 -> 6 -> 8 -> 7 -> 11
+0 -> 2 -> 1 -> 6 -> 8 -> 7 -> 11
+0 -> 2 -> 3 -> 9 -> 12 -> 11
+0 -> 1 -> 6 -> 9 -> 12 -> 11
+0 -> 2 -> 1 -> 6 -> 9 -> 12 -> 11
 
 Derived D* Graph
 ----------- 
 Node: 0
+0 => { 1 , 2 }
 0 => { 2 , 1 }
 ----------- 
 ----------- 
 Node: 1
-1 => { 2 , 1 }
-1 => { 3 , 1 }
+1 => { 5 , 2 }
+1 => { 6 , 1 }
 ----------- 
 ----------- 
 Node: 2
-2 => { 4 , 1 }
+2 => { 1 , 1 }
+2 => { 3 , 2 }
 ----------- 
 ----------- 
 Node: 3
-3 => { 5 , 2 }
------------ 
------------ 
-Node: 4
-4 => { 5 , 1 }
-4 => { 6 , 2 }
+3 => { 9 , 1 }
 ----------- 
 ----------- 
 Node: 5
-5 => { 13 , 2 }
+5 => { 7 , 2 }
 ----------- 
 ----------- 
 Node: 6
-6 => { 13 , 1 }
+6 => { 8 , 2 }
+6 => { 9 , 1 }
+----------- 
+----------- 
+Node: 7
+7 => { 11 , 1 }
+----------- 
+----------- 
+Node: 8
+8 => { 7 , 1 }
+----------- 
+----------- 
+Node: 9
+9 => { 12 , 1 }
 ----------- 
 ----------- 
 Node: 12
-12 => { 0 , 1 }
-12 => { 1 , 1 }
+12 => { 11 , 2 }
 ----------- 
 Shortest-path Tree: 
-Node: 0, Parent: 2
-Node: 1, Parent: 2
-Node: 2, Parent: 4
-Node: 3, Parent: 5
-Node: 4, Parent: 6
-Node: 5, Parent: 13
-Node: 6, Parent: 13
-Node: 7, Parent: 9
-Node: 8, Parent: 1
-Node: 9, Parent: 10
-Node: 10, Parent: 5
-Node: 11, Parent: 13
-Node: 12, Parent: 0
-Node: 13, Parent: -1
+Node: 0, Parent: 1
+Node: 1, Parent: 5
+Node: 2, Parent: 3
+Node: 3, Parent: 9
+Node: 4, Parent: 2
+Node: 5, Parent: 7
+Node: 6, Parent: 8
+Node: 7, Parent: 11
+Node: 8, Parent: 7
+Node: 9, Parent: 12
+Node: 10, Parent: 13
+Node: 11, Parent: -1
+Node: 12, Parent: 11
+Node: 13, Parent: 12
+----------- 
+idom(src, x):
+Node 0: 0
+Node 1: 0
+Node 2: 0
+Node 3: 2
+Node 4: 0
+Node 5: 1
+Node 6: 1
+Node 7: 5
+Node 8: 6
+Node 9: 6
+Node 10: 3
+Node 11: 7
+Node 12: 9
+Node 13: 10
 ----------- 
 In-neighbors in D* graph:
-Node 0: { 0 12 }
-Node 1: { 1 12 }
-Node 2: { 0 1 2 }
-Node 3: { 1 3 }
-Node 4: { 2 4 }
-Node 5: { 3 4 5 }
-Node 6: { 4 6 }
-Node 7: { 7 }
-Node 8: { 8 }
-Node 9: { 9 }
+Node 0: { 0 }
+Node 1: { 0 1 2 }
+Node 2: { 0 2 }
+Node 3: { 2 3 }
+Node 4: { 4 }
+Node 5: { 1 5 }
+Node 6: { 1 6 }
+Node 7: { 5 7 8 }
+Node 8: { 6 8 }
+Node 9: { 3 6 9 }
 Node 10: { 10 }
-Node 11: { 11 }
-Node 12: { 12 }
-Node 13: { 5 6 13 }
+Node 11: { 7 11 12 }
+Node 12: { 9 12 }
+Node 13: { 13 }
 ----------- 
 N^-[V(T_v(x))] for each vertex:
-Node 0: { 0 12 }
-Node 1: { 1 8 12 }
-Node 2: { 0 1 2 8 12 }
-Node 3: { 1 3 }
-Node 4: { 0 1 2 4 8 12 }
-Node 5: { 1 3 4 5 7 9 10 }
-Node 6: { 0 1 2 4 6 8 12 }
-Node 7: { 7 }
-Node 8: { 8 }
-Node 9: { 7 9 }
-Node 10: { 7 9 10 }
-Node 11: { 11 }
-Node 12: { 12 }
-Node 13: { 0 1 2 3 4 5 6 7 8 9 10 11 12 13 }
+Node 0: { 0 }
+Node 1: { 0 1 2 }
+Node 2: { 0 2 4 }
+Node 3: { 0 2 3 4 }
+Node 4: { 4 }
+Node 5: { 0 1 2 5 }
+Node 6: { 1 6 }
+Node 7: { 0 1 2 5 6 7 8 }
+Node 8: { 1 6 8 }
+Node 9: { 0 2 3 4 6 9 }
+Node 10: { 10 }
+Node 11: { 0 1 2 3 4 5 6 7 8 9 10 11 12 13 }
+Node 12: { 0 2 3 4 6 9 10 12 13 }
+Node 13: { 10 13 }
 ----------- 
-B for y = 0: { }
+B for y = 1: { 2 }
 ----------- 
-B for y = 1: { 8 }
+Path from 0 to 1 to 2 to 11: 9
+Path length: 9
 ----------- 
-B for y = 2: { 1 8 }
------------ 
-Path from 12 to 2 to 1 to 13: 8
-Path length: 8
+B for y = 2: { 4 }
 ----------- 
 B for y = 3: { }
 ----------- 
-B for y = 4: { }
------------ 
-B for y = 5: { 3 4 7 9 10 }
------------ 
-Path from 12 to 5 to 4 to 13: 8
-Path length: 8
+B for y = 5: { }
 ----------- 
 B for y = 6: { }
 ----------- 
-Length of simple path which is just greater than the shortest path (PATH2): 8
+B for y = 7: { 6 8 }
 ----------- 
+B for y = 8: { }
+----------- 
+B for y = 9: { 0 2 3 4 }
+----------- 
+B for y = 12: { 10 13 }
+----------- 
+Length of simple path which is just greater than the shortest path (PATH2): 9
+----------- 
+
+Time taken by N2S_PATH2: 0 ms
 End of the program!
 Thank you for using our BTP Project!
